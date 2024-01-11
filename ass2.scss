@@ -1,0 +1,137 @@
+/* // Variables */
+$primaryBackgroundColor: #d8da3d;
+$primaryTextColor: #80007e;
+$lineColor: #80007e;
+$orangebox: #ff7f00;
+$bluebox: #0000ff;
+
+/* Mixin for dotted border */
+@mixin dottedBorder($color) {
+  outline-style: dotted;
+  outline-color: $color;
+  outline-width: 2px;
+}
+
+/* Mixin for common paragraph styles */
+@mixin commonParagraphStyles {
+  padding: 5px;
+}
+
+/*Extendable placeholder for bordered div */
+%borderedDiv {
+  max-width: 850px;
+  @include commonParagraphStyles;
+}
+
+/* Bounce Animation */
+@mixin bounceEffect {
+  &:hover {
+    animation: bounce 0.5s ease-in-out;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+body {
+  background-color: $primaryBackgroundColor;
+  color: $primaryTextColor;
+}
+
+// Styles for Side Elements
+.side_elements {
+  float: left;
+  width: 15%;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+// Styles for Middle Elements
+.middle_elements {
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: 200;
+}
+
+/* Define common styles for .w3schools paragraphs */
+.w3schools {
+  background-color: white;
+  font-family: "Zilla Slab", serif;
+  font-weight: bold;
+  position: relative;
+  padding: 2px;
+
+  /* Define styles for the black square pseudo-element */
+  &::after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 23px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  /* Apply different colors based on odd and even paragraphs */
+  &:nth-child(odd) {
+    &::after {
+      background-color: $orangebox;
+    }
+  }
+
+  &:nth-child(even) {
+    &::after {
+      background-color: $bluebox;
+    }
+  }
+}
+
+/* Styles for the dotted line */
+.line {
+  margin-top: 50px;
+  border-top: 2px dotted $lineColor;
+}
+
+.borders {
+  @extend %borderedDiv;
+
+  .dashed {
+    outline-style: dashed;
+    @include dottedBorder(red);
+    text-align: right;
+  }
+
+  .black {
+    outline-color: black;
+    text-align: left;
+  }
+
+  .dotted {
+    @include dottedBorder($bluebox);
+    text-align: center;
+
+    // Bounce Animation on hover added to the third box
+    @include bounceEffect;
+  }
+}
+
+// Styles for italics text
+.to_italics {
+  margin-top: 50px;
+
+  p {
+    font-style: italic;
+    font-weight: bold;
+    margin: 0;
+    font-family: "Martel", serif;
+  }
+}

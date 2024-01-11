@@ -1,0 +1,101 @@
+/* // Variables */
+/* Mixin for dotted border */
+/* Mixin for common paragraph styles */
+/*Extendable placeholder for bordered div */
+.borders {
+  max-width: 850px;
+  padding: 5px;
+}
+
+/* Bounce Animation */
+body {
+  background-color: #d8da3d;
+  color: #80007e;
+}
+
+.side_elements {
+  float: left;
+  width: 15%;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.middle_elements {
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: 200;
+}
+
+/* Define common styles for .w3schools paragraphs */
+.w3schools {
+  background-color: white;
+  font-family: "Zilla Slab", serif;
+  font-weight: bold;
+  position: relative;
+  padding: 2px;
+  /* Define styles for the black square pseudo-element */
+  /* Apply different colors based on odd and even paragraphs */
+}
+.w3schools::after {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 23px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.w3schools:nth-child(odd)::after {
+  background-color: #ff7f00;
+}
+.w3schools:nth-child(even)::after {
+  background-color: #0000ff;
+}
+
+/* Styles for the dotted line */
+.line {
+  margin-top: 50px;
+  border-top: 2px dotted #80007e;
+}
+
+.borders .dashed {
+  outline-style: dashed;
+  outline-style: dotted;
+  outline-color: red;
+  outline-width: 2px;
+  text-align: right;
+}
+.borders .black {
+  outline-color: black;
+  text-align: left;
+}
+.borders .dotted {
+  outline-style: dotted;
+  outline-color: #0000ff;
+  outline-width: 2px;
+  text-align: center;
+}
+.borders .dotted:hover {
+  animation: bounce 0.5s ease-in-out;
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.to_italics {
+  margin-top: 50px;
+}
+.to_italics p {
+  font-style: italic;
+  font-weight: bold;
+  margin: 0;
+  font-family: "Martel", serif;
+}/*# sourceMappingURL=ass2.css.map */
