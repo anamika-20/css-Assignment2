@@ -1,9 +1,16 @@
-/* // Variables */
+/* Variables */
 $primaryBackgroundColor: #d8da3d;
 $primaryTextColor: #80007e;
 $lineColor: #80007e;
 $orangebox: #ff7f00;
 $bluebox: #0000ff;
+
+/* Mixin for dashed border */
+@mixin dashedBorder($color) {
+  outline-style: dashed;
+  outline-color: $color;
+  outline-width: 2px;
+}
 
 /* Mixin for dotted border */
 @mixin dottedBorder($color) {
@@ -12,15 +19,9 @@ $bluebox: #0000ff;
   outline-width: 2px;
 }
 
-/* Mixin for common paragraph styles */
-@mixin commonParagraphStyles {
-  padding: 5px;
-}
-
 /*Extendable placeholder for bordered div */
 %borderedDiv {
   max-width: 850px;
-  @include commonParagraphStyles;
 }
 
 /* Bounce Animation */
@@ -98,20 +99,24 @@ body {
 /* Styles for the dotted line */
 .line {
   margin-top: 50px;
+  margin-bottom: 30px;
   border-top: 2px dotted $lineColor;
 }
 
 .borders {
   @extend %borderedDiv;
 
+  p {
+    padding: 10px;
+  }
+
   .dashed {
-    outline-style: dashed;
-    @include dottedBorder(red);
+    @include dashedBorder(red);
     text-align: right;
   }
 
   .black {
-    outline-color: black;
+    @include dashedBorder(black);
     text-align: left;
   }
 
